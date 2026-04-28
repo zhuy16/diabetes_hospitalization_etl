@@ -1,9 +1,12 @@
-.PHONY: setup run run-hl7 phase2 phase3 dq dashboard test clean
+.PHONY: setup fetch-diabetes130 run run-hl7 phase2 phase3 dq dashboard test clean
 
 PYTHON_BIN := $(shell if [ -x .venv/bin/python ]; then echo .venv/bin/python; else echo python3; fi)
 
 setup:
 	$(PYTHON_BIN) -m pip install -r requirements.txt
+
+fetch-diabetes130:
+	bash scripts/fetch_diabetes130.sh
 
 run:
 	$(PYTHON_BIN) -m etl.pipeline

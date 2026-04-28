@@ -9,37 +9,37 @@
     {
       "check": "row_count_patients",
       "status": "PASS",
-      "value": "300",
+      "value": "71518",
       "details": "Row count in patients"
     },
     {
       "check": "row_count_encounters",
       "status": "PASS",
-      "value": "1337",
+      "value": "101766",
       "details": "Row count in encounters"
     },
     {
       "check": "row_count_conditions",
       "status": "PASS",
-      "value": "284",
+      "value": "303496",
       "details": "Row count in conditions"
     },
     {
       "check": "row_count_observations",
       "status": "PASS",
-      "value": "3507",
+      "value": "34882",
       "details": "Row count in observations"
     },
     {
       "check": "row_count_medications",
       "status": "PASS",
-      "value": "80",
+      "value": "120054",
       "details": "Row count in medications"
     },
     {
       "check": "row_count_claims",
       "status": "PASS",
-      "value": "1337",
+      "value": "101766",
       "details": "Row count in claims"
     },
     {
@@ -57,13 +57,13 @@
     {
       "check": "icd10_diabetes_rows",
       "status": "PASS",
-      "value": "188",
+      "value": "38708",
       "details": "Conditions mapped to Type 2 diabetes ICD-10 E11%"
     },
     {
       "check": "icd10_ckd_rows",
       "status": "PASS",
-      "value": "96",
+      "value": "10266",
       "details": "Conditions mapped to CKD ICD-10 N18%"
     },
     {

@@ -8,6 +8,7 @@ from typing import Dict
 
 import pandas as pd
 
+from etl.extract_diabetes130 import load_diabetes130_to_canonical
 from etl.normalize_codes import CREATININE_LOINC, EGFR_LOINC, HBA1C_LOINC, SGLT2_RXNORM
 
 
@@ -15,6 +16,7 @@ from etl.normalize_codes import CREATININE_LOINC, EGFR_LOINC, HBA1C_LOINC, SGLT2
 class ExtractConfig:
     raw_csv_dir: Path
     processed_demo_dir: Path
+    diabetes130_csv: Path | None = None
     seed: int = 7
     patient_count: int = 300
 
@@ -42,6 +44,11 @@ def load_synthea_or_demo(config: ExtractConfig) -> Dict[str, pd.DataFrame]:
             "medications": medications,
             "claims": claims,
         }
+
+    if config.diabetes130_csv and config.diabetes130_csv.exists():
+        dataset = load_diabetes130_to_canonical(config.diabetes130_csv)
+        _persist_demo_dataset(config.processed_demo_dir, dataset)
+        return dataset
 
     demo = _generate_demo_dataset(config)
     _persist_demo_dataset(config.processed_demo_dir, demo)

@@ -14,13 +14,18 @@ def run_pipeline(repo_root: Path) -> Path:
     started_at = datetime.now(timezone.utc)
 
     raw_csv_dir = repo_root / "data" / "raw" / "synthea" / "csv"
+    diabetes130_csv = repo_root / "data" / "raw" / "diabetes130" / "diabetic_data.csv"
     processed_demo_dir = repo_root / "data" / "processed" / "demo_csv"
     db_path = repo_root / "db" / "clinical.duckdb"
     sql_dir = repo_root / "sql"
 
     try:
         dataset = load_synthea_or_demo(
-            ExtractConfig(raw_csv_dir=raw_csv_dir, processed_demo_dir=processed_demo_dir)
+            ExtractConfig(
+                raw_csv_dir=raw_csv_dir,
+                processed_demo_dir=processed_demo_dir,
+                diabetes130_csv=diabetes130_csv,
+            )
         )
         rebuild_database(db_path=db_path, sql_dir=sql_dir, dataset=dataset)
         capture_table_row_counts(db_path, run_id)

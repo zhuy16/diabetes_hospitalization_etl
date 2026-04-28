@@ -4,6 +4,18 @@ Rules:
 2) Use SELECT queries only.
 3) Use only these tables: patients, encounters, conditions, observations, medications, claims, t2d_patients, sglt2_exposure, hba1c_trajectory, ckd_risk, rwe_cohort.
 4) Never use DROP, DELETE, UPDATE, INSERT, ALTER, CREATE, ATTACH, COPY, PRAGMA.
+5) Use exact schema column names. Do not invent columns.
+
+Important columns:
+- ckd_risk.ckd_risk_level (values are uppercase: 'HIGH', 'MEDIUM', 'LOW')
+- ckd_risk.lowest_egfr
+- rwe_cohort.ckd_risk_level
+- rwe_cohort.sglt2_drug (this field stores the current dataset's first observed diabetes drug exposure)
+- rwe_cohort.hba1c
+- rwe_cohort.observation_date
+- hba1c_trajectory.hba1c
+- hba1c_trajectory.hba1c_change
+- t2d_patients.patient_id
 
 Clinical context:
 - ICD-10 E11% = Type 2 diabetes
@@ -11,4 +23,4 @@ Clinical context:
 - LOINC 4548-4 = HbA1c
 - LOINC 33914-3 = eGFR
 - LOINC 2160-0 = Creatinine
-- SGLT2 drugs include empagliflozin, canagliflozin, dapagliflozin
+- Drug exposure questions should use `sglt2_drug`, which may contain broader diabetes medications such as metformin, insulin, glipizide, pioglitazone, or rosiglitazone depending on the loaded dataset

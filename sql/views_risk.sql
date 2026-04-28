@@ -6,6 +6,8 @@ SELECT
     CASE
         WHEN MIN(CASE WHEN o.loinc_code = '33914-3' THEN o.value END) < 30 THEN 'HIGH'
         WHEN MIN(CASE WHEN o.loinc_code = '33914-3' THEN o.value END) < 60 THEN 'MEDIUM'
+        WHEN COUNT(CASE WHEN c.icd10_code LIKE 'N18%' THEN 1 END) >= 2 THEN 'HIGH'
+        WHEN COUNT(CASE WHEN c.icd10_code LIKE 'N18%' THEN 1 END) >= 1 THEN 'MEDIUM'
         ELSE 'LOW'
     END AS ckd_risk_level
 FROM t2d_patients p

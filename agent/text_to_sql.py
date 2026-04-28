@@ -34,6 +34,12 @@ def _load_prompt() -> str:
 def _sanitize_sql(sql: str) -> str:
     cleaned = sql.strip().strip("`")
     cleaned = re.sub(r";+$", "", cleaned)
+    # Normalize common schema hallucinations from NL-to-SQL generation.
+    cleaned = re.sub(r"\brisk_category\b", "ckd_risk_level", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\brisk_level\b", "ckd_risk_level", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"'High'", "'HIGH'", cleaned)
+    cleaned = re.sub(r"'Medium'", "'MEDIUM'", cleaned)
+    cleaned = re.sub(r"'Low'", "'LOW'", cleaned)
     return cleaned
 
 
@@ -75,8 +81,22 @@ def run_query(sql: str, db_path: Path | None = None):
 
 def ask(question: str) -> Tuple[str, object]:
     sql = text_to_sql(question)
-    result = run_query(sql)
-    return sql, result
+    try:
+        result = run_query(sql)
+        return sql, result
+    except duckdb.Error as exc:
+        # One-shot repair pass when the generated SQL references missing columns/tables.
+        if "Binder Error" not in str(exc):
+            raise
+        repair_prompt = (
+            f"{question}\n\n"
+            "The previous SQL failed on DuckDB. Please return corrected SQL only.\n"
+            f"Failed SQL:\n{sql}\n\n"
+            f"Error:\n{exc}"
+        )
+        repaired_sql = text_to_sql(repair_prompt)
+        repaired_result = run_query(repaired_sql)
+        return repaired_sql, repaired_result
 
 
 if __name__ == "__main__":
