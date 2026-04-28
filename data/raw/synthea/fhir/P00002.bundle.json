@@ -1,0 +1,614 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "P00002",
+        "gender": "female",
+        "birthDate": "1988-08-10",
+        "address": [
+          {
+            "state": "MA",
+            "postalCode": "70515"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "valueString": "Asian"
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Not Hispanic or Latino"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "E00002_00",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "class": {
+          "code": "outpatient"
+        },
+        "period": {
+          "start": "2025-06-28"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "E00002_01",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "class": {
+          "code": "inpatient"
+        },
+        "period": {
+          "start": "2025-02-17"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "E00002_02",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "class": {
+          "code": "outpatient"
+        },
+        "period": {
+          "start": "2025-07-04"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "E00002_03",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "class": {
+          "code": "inpatient"
+        },
+        "period": {
+          "start": "2025-03-13"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "C00002_T2D",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_00"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "E11.65",
+              "display": "Type 2 diabetes mellitus"
+            }
+          ]
+        },
+        "onsetDateTime": "2024-09-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "C00002_CKD_0",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_00"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "N18.2",
+              "display": "Chronic kidney disease"
+            }
+          ]
+        },
+        "onsetDateTime": "2025-01-19"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "C00002_CKD_1",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_01"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "N18.2",
+              "display": "Chronic kidney disease"
+            }
+          ]
+        },
+        "onsetDateTime": "2024-09-10"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "O00002_00_A1C",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_00"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 7.4,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "effectiveDateTime": "2025-06-28"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "O00002_00_EGFR",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_00"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "33914-3",
+              "display": "Glomerular filtration rate/1.73 sq M predicted"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 59.1,
+          "unit": "mL/min/1.73m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/1.73m2"
+        },
+        "effectiveDateTime": "2025-06-28"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "O00002_00_CR",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_00"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 1.22,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "effectiveDateTime": "2025-06-28"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "O00002_01_A1C",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_01"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 7.0,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "effectiveDateTime": "2025-02-17"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "O00002_01_EGFR",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_01"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "33914-3",
+              "display": "Glomerular filtration rate/1.73 sq M predicted"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 37.9,
+          "unit": "mL/min/1.73m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/1.73m2"
+        },
+        "effectiveDateTime": "2025-02-17"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "O00002_01_CR",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_01"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 2.21,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "effectiveDateTime": "2025-02-17"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "O00002_02_A1C",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_02"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 9.2,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "effectiveDateTime": "2025-07-04"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "O00002_02_EGFR",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_02"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "33914-3",
+              "display": "Glomerular filtration rate/1.73 sq M predicted"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 52.1,
+          "unit": "mL/min/1.73m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/1.73m2"
+        },
+        "effectiveDateTime": "2025-07-04"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "O00002_02_CR",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_02"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 0.83,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "effectiveDateTime": "2025-07-04"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "O00002_03_A1C",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_03"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 9.3,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "effectiveDateTime": "2025-03-13"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "O00002_03_EGFR",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_03"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "33914-3",
+              "display": "Glomerular filtration rate/1.73 sq M predicted"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 30.3,
+          "unit": "mL/min/1.73m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/1.73m2"
+        },
+        "effectiveDateTime": "2025-03-13"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "O00002_03_CR",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_03"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 0.68,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "effectiveDateTime": "2025-03-13"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "M00002_SGLT2",
+        "subject": {
+          "reference": "Patient/P00002"
+        },
+        "encounter": {
+          "reference": "Encounter/E00002_00"
+        },
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "2200644",
+              "display": "empagliflozin"
+            }
+          ]
+        },
+        "authoredOn": "2026-02-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Claim",
+        "id": "CL00002_00",
+        "patient": {
+          "reference": "Patient/P00002"
+        },
+        "created": "2025-06-28",
+        "diagnosis": [
+          {
+            "diagnosisCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                  "code": "E11.9"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Claim",
+        "id": "CL00002_01",
+        "patient": {
+          "reference": "Patient/P00002"
+        },
+        "created": "2025-02-17",
+        "diagnosis": [
+          {
+            "diagnosisCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                  "code": "E11.9"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Claim",
+        "id": "CL00002_02",
+        "patient": {
+          "reference": "Patient/P00002"
+        },
+        "created": "2025-07-04",
+        "diagnosis": [
+          {
+            "diagnosisCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                  "code": "E11.9"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Claim",
+        "id": "CL00002_03",
+        "patient": {
+          "reference": "Patient/P00002"
+        },
+        "created": "2025-03-13",
+        "diagnosis": [
+          {
+            "diagnosisCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                  "code": "E11.9"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+condition_id,patient_id,encounter_id,icd10_code,icd10_description,onset_date,resolution_date
+P00001_DG1_001,P00001,E00001_00,E11.9,Type 2 diabetes mellitus,2024-04-04,
+P00002_DG1_001,P00002,E00002_00,E11.65,Type 2 diabetes mellitus,2024-02-03,

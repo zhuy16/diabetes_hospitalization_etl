@@ -1,0 +1,31 @@
+observation_id,patient_id,encounter_id,loinc_code,loinc_description,value,unit,observation_date
+P00001_OBX_001,P00001,E00001_00,4548-4,Hemoglobin A1c/Hemoglobin.total in Blood,6.6,%,2025-01-29
+P00001_OBX_002,P00001,E00001_00,33914-3,Glomerular filtration rate/1.73 sq M predicted,58.7,mL/min/1.73m2,2025-01-29
+P00001_OBX_003,P00001,E00001_00,2160-0,Creatinine [Mass/volume] in Serum or Plasma,3.04,mg/dL,2025-01-29
+P00001_OBX_004,P00001,E00001_00,4548-4,Hemoglobin A1c/Hemoglobin.total in Blood,6.5,%,2025-02-08
+P00001_OBX_005,P00001,E00001_00,33914-3,Glomerular filtration rate/1.73 sq M predicted,83.0,mL/min/1.73m2,2025-02-08
+P00001_OBX_006,P00001,E00001_00,2160-0,Creatinine [Mass/volume] in Serum or Plasma,0.77,mg/dL,2025-02-08
+P00001_OBX_007,P00001,E00001_00,4548-4,Hemoglobin A1c/Hemoglobin.total in Blood,6.5,%,2025-02-14
+P00001_OBX_008,P00001,E00001_00,33914-3,Glomerular filtration rate/1.73 sq M predicted,61.3,mL/min/1.73m2,2025-02-14
+P00001_OBX_009,P00001,E00001_00,2160-0,Creatinine [Mass/volume] in Serum or Plasma,1.32,mg/dL,2025-02-14
+P00001_OBX_010,P00001,E00001_00,4548-4,Hemoglobin A1c/Hemoglobin.total in Blood,5.8,%,2025-08-15
+P00001_OBX_011,P00001,E00001_00,33914-3,Glomerular filtration rate/1.73 sq M predicted,67.1,mL/min/1.73m2,2025-08-15
+P00001_OBX_012,P00001,E00001_00,2160-0,Creatinine [Mass/volume] in Serum or Plasma,1.39,mg/dL,2025-08-15
+P00001_OBX_013,P00001,E00001_00,4548-4,Hemoglobin A1c/Hemoglobin.total in Blood,5.8,%,2026-01-16
+P00001_OBX_014,P00001,E00001_00,33914-3,Glomerular filtration rate/1.73 sq M predicted,66.6,mL/min/1.73m2,2026-01-16
+P00001_OBX_015,P00001,E00001_00,2160-0,Creatinine [Mass/volume] in Serum or Plasma,0.6,mg/dL,2026-01-16
+P00001_OBX_016,P00001,E00001_00,4548-4,Hemoglobin A1c/Hemoglobin.total in Blood,5.8,%,2026-02-06
+P00001_OBX_017,P00001,E00001_00,33914-3,Glomerular filtration rate/1.73 sq M predicted,92.7,mL/min/1.73m2,2026-02-06
+P00001_OBX_018,P00001,E00001_00,2160-0,Creatinine [Mass/volume] in Serum or Plasma,0.68,mg/dL,2026-02-06
+P00002_OBX_001,P00002,E00002_00,4548-4,Hemoglobin A1c/Hemoglobin.total in Blood,8.6,%,2024-11-29
+P00002_OBX_002,P00002,E00002_00,33914-3,Glomerular filtration rate/1.73 sq M predicted,63.2,mL/min/1.73m2,2024-11-29
+P00002_OBX_003,P00002,E00002_00,2160-0,Creatinine [Mass/volume] in Serum or Plasma,1.93,mg/dL,2024-11-29
+P00002_OBX_004,P00002,E00002_00,4548-4,Hemoglobin A1c/Hemoglobin.total in Blood,6.3,%,2025-09-07
+P00002_OBX_005,P00002,E00002_00,33914-3,Glomerular filtration rate/1.73 sq M predicted,37.8,mL/min/1.73m2,2025-09-07
+P00002_OBX_006,P00002,E00002_00,2160-0,Creatinine [Mass/volume] in Serum or Plasma,0.96,mg/dL,2025-09-07
+P00002_OBX_007,P00002,E00002_00,4548-4,Hemoglobin A1c/Hemoglobin.total in Blood,5.8,%,2025-12-20
+P00002_OBX_008,P00002,E00002_00,33914-3,Glomerular filtration rate/1.73 sq M predicted,70.4,mL/min/1.73m2,2025-12-20
+P00002_OBX_009,P00002,E00002_00,2160-0,Creatinine [Mass/volume] in Serum or Plasma,2.09,mg/dL,2025-12-20
+P00002_OBX_010,P00002,E00002_00,4548-4,Hemoglobin A1c/Hemoglobin.total in Blood,5.8,%,2026-02-17
+P00002_OBX_011,P00002,E00002_00,33914-3,Glomerular filtration rate/1.73 sq M predicted,99.0,mL/min/1.73m2,2026-02-17
+P00002_OBX_012,P00002,E00002_00,2160-0,Creatinine [Mass/volume] in Serum or Plasma,2.97,mg/dL,2026-02-17

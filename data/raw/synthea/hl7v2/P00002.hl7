@@ -1,0 +1,24 @@
+MSH|^~\&|SYNTHETIC|DIABETES_ETL|ANALYTICS|DEMO|20260428100000||ADT^A01|MSGP00002|P|2.5
+PID|1||P00002||P00002^DEMO||19641119|F|||^^NY^97641
+PV1|7|OUTPATIENT|||PR026||||||||||||E00002_00
+PV1|8|INPATIENT|||PR023||||||||||||E00002_01
+PV1|9|ED|||PR012||||||||||||E00002_02
+PV1|10|ED|||PR042||||||||||||E00002_03
+DG1|1||E11.65^Type 2 diabetes mellitus^I10||20240203
+OBX|1|NM|4548-4^Hemoglobin A1c/Hemoglobin.total in Blood^LN||8.6|%|||||F|||20241129
+OBX|2|NM|33914-3^Glomerular filtration rate/1.73 sq M predicted^LN||63.2|mL/min/1.73m2|||||F|||20241129
+OBX|3|NM|2160-0^Creatinine [Mass/volume] in Serum or Plasma^LN||1.93|mg/dL|||||F|||20241129
+OBX|4|NM|4548-4^Hemoglobin A1c/Hemoglobin.total in Blood^LN||6.3|%|||||F|||20250907
+OBX|5|NM|33914-3^Glomerular filtration rate/1.73 sq M predicted^LN||37.8|mL/min/1.73m2|||||F|||20250907
+OBX|6|NM|2160-0^Creatinine [Mass/volume] in Serum or Plasma^LN||0.96|mg/dL|||||F|||20250907
+OBX|7|NM|4548-4^Hemoglobin A1c/Hemoglobin.total in Blood^LN||5.8|%|||||F|||20251220
+OBX|8|NM|33914-3^Glomerular filtration rate/1.73 sq M predicted^LN||70.4|mL/min/1.73m2|||||F|||20251220
+OBX|9|NM|2160-0^Creatinine [Mass/volume] in Serum or Plasma^LN||2.09|mg/dL|||||F|||20251220
+OBX|10|NM|4548-4^Hemoglobin A1c/Hemoglobin.total in Blood^LN||5.8|%|||||F|||20260217
+OBX|11|NM|33914-3^Glomerular filtration rate/1.73 sq M predicted^LN||99.0|mL/min/1.73m2|||||F|||20260217
+OBX|12|NM|2160-0^Creatinine [Mass/volume] in Serum or Plasma^LN||2.97|mg/dL|||||F|||20260217
+RXE|1|10 mg|1545149^canagliflozin^RXNORM||20250409|20250708
+FT1|1||20241129||CG|99214^CPT|||1|2434.12||Medicaid|E11.9
+FT1|2||20250907||CG|99214^CPT|||1|737.67||Commercial|E11.9
+FT1|3||20251220||CG|83036^CPT|||1|1967.43||Medicare|E11.9
+FT1|4||20260217||CG|80053^CPT|||1|1183.25||Medicaid|E11.9

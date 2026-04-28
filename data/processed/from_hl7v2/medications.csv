@@ -1,0 +1,3 @@
+medication_id,patient_id,encounter_id,rxnorm_code,ndc_code,drug_name,start_date,stop_date,dosage
+P00001_RXE_001,P00001,E00001_00,1488574,,dapagliflozin,2026-01-27,2026-04-27,100 mg
+P00002_RXE_001,P00002,E00002_00,1545149,,canagliflozin,2025-04-09,2025-07-08,10 mg

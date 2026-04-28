@@ -1,0 +1,11 @@
+encounter_id,patient_id,encounter_date,encounter_type,provider_id,payer,total_cost
+E00001_00,P00001,,outpatient,PR041,,
+E00001_01,P00001,,outpatient,PR035,,
+E00001_02,P00001,,ed,PR004,,
+E00001_03,P00001,,ed,PR050,,
+E00001_04,P00001,,ed,PR027,,
+E00001_05,P00001,,inpatient,PR022,,
+E00002_00,P00002,,outpatient,PR026,,
+E00002_01,P00002,,inpatient,PR023,,
+E00002_02,P00002,,ed,PR012,,
+E00002_03,P00002,,ed,PR042,,

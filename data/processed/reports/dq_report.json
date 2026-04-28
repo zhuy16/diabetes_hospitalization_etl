@@ -1,0 +1,76 @@
+{
+  "summary": {
+    "total_checks": 11,
+    "pass": 11,
+    "warn": 0,
+    "fail": 0
+  },
+  "checks": [
+    {
+      "check": "row_count_patients",
+      "status": "PASS",
+      "value": "300",
+      "details": "Row count in patients"
+    },
+    {
+      "check": "row_count_encounters",
+      "status": "PASS",
+      "value": "1337",
+      "details": "Row count in encounters"
+    },
+    {
+      "check": "row_count_conditions",
+      "status": "PASS",
+      "value": "284",
+      "details": "Row count in conditions"
+    },
+    {
+      "check": "row_count_observations",
+      "status": "PASS",
+      "value": "3507",
+      "details": "Row count in observations"
+    },
+    {
+      "check": "row_count_medications",
+      "status": "PASS",
+      "value": "80",
+      "details": "Row count in medications"
+    },
+    {
+      "check": "row_count_claims",
+      "status": "PASS",
+      "value": "1337",
+      "details": "Row count in claims"
+    },
+    {
+      "check": "null_patient_ids",
+      "status": "PASS",
+      "value": "0",
+      "details": "Null patient_id count across core tables"
+    },
+    {
+      "check": "known_loinc_coverage_pct",
+      "status": "PASS",
+      "value": "100.00",
+      "details": "Percent of observations with expected LOINC codes"
+    },
+    {
+      "check": "icd10_diabetes_rows",
+      "status": "PASS",
+      "value": "188",
+      "details": "Conditions mapped to Type 2 diabetes ICD-10 E11%"
+    },
+    {
+      "check": "icd10_ckd_rows",
+      "status": "PASS",
+      "value": "96",
+      "details": "Conditions mapped to CKD ICD-10 N18%"
+    },
+    {
+      "check": "hba1c_out_of_expected_range",
+      "status": "PASS",
+      "value": "0",
+      "details": "HbA1c rows outside rough expected range [3,20]"
+    }
+  ]
+}
