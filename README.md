@@ -81,7 +81,7 @@ make dashboard
 
 ### Scenario 4: Different Clinical Question
 
-Your interviewer says: *"We care about readmission risk in diabetic CKD patients. Can you build that?"*
+Your stakeholder says: *"We care about readmission risk in diabetic CKD patients. Can you build that?"*
 
 **Adapt in minutes**:
 1. Edit `sql/views_t2d.sql` to filter your cohort definition (e.g., add comorbidity logic)
@@ -96,7 +96,7 @@ Your interviewer says: *"We care about readmission risk in diabetic CKD patients
 ## Use This As
 
 - **Portfolio piece**: "I built a text-to-SQL system for healthcare analytics"
-- **Interview demo**: "Let me show you real ETL, SQL cohort logic, and a working LLM integration"
+- **Professional demo**: "Let me show you real ETL, SQL cohort logic, and a working LLM integration"
 - **Template**: Copy this structure, swap your data, ask your questions
 - **Learning**: Study canonical modeling, healthcare code systems, DuckDB + SQL views + Streamlit
 
@@ -119,7 +119,7 @@ Your interviewer says: *"We care about readmission risk in diabetic CKD patients
 ## Detailed Docs
 
 - **[REPO_WALKTHROUGH.md](docs/REPO_WALKTHROUGH.md)** — Folder map, entry points, data formats, how to plug in new datasets
-- **[INTERVIEW_DEMO.md](docs/INTERVIEW_DEMO.md)** — Script for walking an interviewer through the demo
+- **[DEMO_RUNBOOK.md](docs/DEMO_RUNBOOK.md)** — Script for walking a reviewer through the demo
 - **[PHASE3.md](docs/PHASE3.md)** — Production hardening details (HL7 parsing robustness, metadata logging, testing)
 - **[DETAILED_README.md](docs/DETAILED_README.md)** — Full project structure and technical details
 
@@ -132,6 +132,7 @@ Your interviewer says: *"We care about readmission risk in diabetic CKD patients
 | Run full pipeline | `make run` or `bash scripts/run_pipeline.sh` |
 | HL7 ingestion | `make run-hl7` or `python -m etl.pipeline_hl7v2` |
 | Ask questions via CLI | `python -m agent.text_to_sql` |
+| Ask questions in dashboard | `streamlit run dashboard/app.py` then use **Ask the Cohort (Natural Language)** |
 | Explore dashboard | `streamlit run dashboard/app.py` |
 | Check data quality | `make dq` |
 | Run tests | `make test` |

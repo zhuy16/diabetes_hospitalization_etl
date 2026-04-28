@@ -52,7 +52,7 @@ diabetes_hospitalization_etl/
 │
 ├── tests/                      ← Pytest suite
 ├── scripts/                    ← Shell convenience wrappers
-├── docs/                       ← This file + INTERVIEW_DEMO.md + PHASE3.md
+├── docs/                       ← This file + DEMO_RUNBOOK.md + PHASE3.md
 ├── Makefile                    ← Short-form targets: make run, make dashboard …
 └── .env.example                ← Copy to .env and add ANTHROPIC_API_KEY
 ```

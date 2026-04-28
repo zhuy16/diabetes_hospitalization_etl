@@ -8,6 +8,8 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+from agent.text_to_sql import ask
+
 
 def _repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
@@ -20,6 +22,52 @@ def _connect() -> duckdb.DuckDBPyConnection:
 
 st.set_page_config(page_title="ClinicalCohort AI", layout="wide")
 st.title("ClinicalCohort AI - RWE Dashboard")
+
+st.subheader("Ask the Cohort (Natural Language)")
+with st.expander("What data is available and what can I ask?", expanded=False):
+    st.markdown(
+        """
+        **Available data views**
+        - `rwe_cohort`: patient-level cohort with drug exposure, HbA1c, CKD risk fields
+        - `t2d_patients`: Type 2 diabetes cohort (ICD-10 E11%)
+        - `sglt2_exposure`: SGLT2 drug exposure (empagliflozin, canagliflozin, dapagliflozin)
+        - `hba1c_trajectory`: HbA1c time series and month-over-month change
+        - `ckd_risk`: eGFR-driven risk buckets (HIGH/MEDIUM/LOW)
+
+        **Good question types**
+        - Counts and rates by risk bucket or drug
+        - Trend questions over time (HbA1c by month)
+        - Cohort slicing (e.g., high-risk patients not on SGLT2)
+        - Top-N summaries (e.g., most common CKD strata)
+        """
+    )
+
+question = st.text_area(
+    "Ask a question",
+    placeholder="Example: How many HIGH CKD risk patients are not on SGLT2 treatment?",
+    height=90,
+)
+
+if st.button("Run Question", type="primary"):
+    q = question.strip()
+    if not q:
+        st.warning("Please enter a question first.")
+    else:
+        try:
+            generated_sql, result_df = ask(q)
+            st.session_state["nlq_sql"] = generated_sql
+            st.session_state["nlq_result"] = result_df
+        except Exception as exc:
+            st.error(f"Could not run question: {exc}")
+
+if "nlq_sql" in st.session_state and "nlq_result" in st.session_state:
+    st.caption("Last generated SQL")
+    st.code(st.session_state["nlq_sql"], language="sql")
+    st.caption("Answer")
+    st.dataframe(st.session_state["nlq_result"], use_container_width=True)
+    st.caption("The answer refreshes each time you run a new question.")
+
+st.divider()
 
 conn = _connect()
 

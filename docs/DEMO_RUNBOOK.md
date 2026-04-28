@@ -1,4 +1,4 @@
-# Interview Demo Script (Phase II)
+# Demo Runbook (Phase II)
 
 ## Goal
 
@@ -23,11 +23,12 @@ Show an end-to-end healthcare ETL + SQL analytics + AI query workflow in under 8
 - Run dashboard: `streamlit run dashboard/app.py`
 - Show filters and risk distribution.
 
-5. AI-assisted analysis
-- Run: `python -m agent.text_to_sql`
-- Ask: "How many diabetic patients are high CKD risk without SGLT2 exposure?"
+5. AI-assisted analysis in dashboard
+- Run dashboard: `streamlit run dashboard/app.py`
+- In **Ask the Cohort (Natural Language)**, ask:
+  "How many diabetic patients are high CKD risk without SGLT2 exposure?"
 
-## Talking points for recruiters
+## Talking points for reviewers
 
 - Canonical healthcare coding systems used directly in ETL and analytics.
 - Message-level HL7 ingestion with structured SQL warehouse outputs.
