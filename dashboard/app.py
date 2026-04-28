@@ -189,13 +189,14 @@ pretty_names = {
     "gender": "Gender",
 }
 
+st.subheader("Cohort Distribution")
+st.caption("These charts reflect the cohort selected by the sidebar filters on the left.")
+
 explore_col, ask_col = st.columns([1, 1], gap="large")
 left_panel = explore_col.container(border=True)
 right_panel = ask_col.container(border=True)
 
 with left_panel:
-    st.subheader("Cohort Distribution")
-    st.caption("These charts reflect the cohort selected by the sidebar filters on the left.")
 
     if is_diabetes130_mode:
         st.markdown("**Average HbA1c by Primary Diabetes Drug**")
