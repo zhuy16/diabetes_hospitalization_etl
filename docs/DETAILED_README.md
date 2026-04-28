@@ -67,7 +67,12 @@ Raw source (synthetic/demo, Diabetes130, CSV, HL7/FHIR)
 
 ### Application Layer
 
-- `dashboard/app.py` — Streamlit dashboard (filters, charts, table preview)
+- `dashboard/app.py` — Streamlit dashboard with cohort-first UX:
+  - **Left sidebar**: Multi-select CKD Risk, Diabetes Drug filters; HbA1c threshold slider; optional NLQ-based cohort restriction (sidebar queries `rwe_cohort`, `ckd_risk` tables via Claude text-to-SQL)
+  - **Left panel**: Trajectory chart (selectable Y-axis across all numeric columns) + distribution pie (selectable categorical dimension)
+  - **Right panel**: Value-vs-category boxplot (selectable value and category; statistical group comparison)
+  - **Dataset-agnostic**: Same visualization code and selectbox logic works for any data source (synthetic, Diabetes130, or custom CSV) mapped to canonical schema
+  - **Cohort-uniform**: All charts and tables enforce the same sidebar-defined cohort filter; custom NLQ cohort acts as additional patient_id restriction
 - `agent/text_to_sql.py` — CLI text-to-SQL agent (Anthropic)
 - `agent/prompt_template.txt` — System prompt
 

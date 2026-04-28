@@ -30,7 +30,7 @@ streamlit run dashboard/app.py
 ✅ **Real healthcare ETL**: ICD-10, LOINC, RxNorm code systems. Canonical schema. DuckDB analytical database.  
 ✅ **SQL + AI**: Text-to-SQL agent using Claude. SELECT-only safety enforcement. Query against live cohort views.  
 ✅ **End-to-end pipeline**: Raw data → Extract/normalize → Load tables → Build SQL views → Query/visualize.  
-✅ **Dataset-flexible**: Same canonical model supports synthetic/demo, CSV drops, and optional Diabetes130 source selection.  
+✅ **Dataset-flexible dashboard**: Same canonical model supports synthetic/demo, CSV drops, and optional Diabetes130. Sidebar cohort filters apply uniformly. Selectable visualization axes (trajectory Y-axis, distribution category). Equal-width panels. NLQ-based cohort customization in sidebar converts natural language to SQL queries. Box plot with statistical group comparison.  
 ✅ **Production polish**: Data quality checks. ETL audit logging. Comprehensive test suite. CI/CD ready.  
 
 ---
