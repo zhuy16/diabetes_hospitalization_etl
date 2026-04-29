@@ -1,6 +1,8 @@
 
 <br />
-# ClinicalCohort AI — Serious Longitudinal Healthcare Analytics
+# ClinicalCohort AI — Longitudinal Healthcare Analytics
+
+![ClinicalCohort AI dashboard](docs/dashboard.png)
 
 
 ClinicalCohort AI is a robust, extensible analytics platform for longitudinal clinical and observational healthcare data, centered around four core functionalities:
