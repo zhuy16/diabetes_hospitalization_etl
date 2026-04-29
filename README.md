@@ -1,43 +1,142 @@
-# ClinicalCohort AI — Longitudinal Healthcare Analytics
 
-Ask questions about longitudinal clinical or observational datasets in plain English. Get SQL queries, results, and interactive dashboards.
+<br />
+# ClinicalCohort AI — Serious Longitudinal Healthcare Analytics
 
-![ClinicalCohort AI dashboard](docs/dashboard.png)
+
+ClinicalCohort AI is a robust, extensible analytics platform for longitudinal clinical and observational healthcare data, centered around four core functionalities:
+
+- **Patient trajectory visualization:** Explore how key metrics (e.g., lab values) change over time for individual patients or cohorts.
+- **Feature value distribution:** Analyze the distribution of any numeric feature across different patient categories (e.g., drug exposure, risk strata).
+- **Patient category distribution:** Instantly see how patients are distributed across categorical variables (e.g., risk levels, drug groups).
+- **Natural language to SQL (NLQ-to-SQL) via LLM:** Define and filter cohorts or generate custom analytics by asking questions in plain English, powered by a large language model.
 
 ---
 
-## 30-Second Demo
+## Purpose
+
+ClinicalCohort AI is designed for:
+- Healthcare data scientists and analysts
+- Clinical informatics teams
+- Researchers working with EHR, claims, or observational datasets
+
+It provides a reproducible, extensible framework for:
+- Building and validating patient cohorts
+- Running complex cohort-based analytics
+- Visualizing trends, risk, and outcomes
+
+While the platform implements many best practices for data quality, modular ETL, and flexible analytics, it is intended primarily for research, prototyping, and advanced analytics—not as a turnkey production system.
+
+---
+
+## How It Works
+
+**Input:**
+- Raw healthcare data (CSV, HL7 v2, FHIR bundles, or demo data)
+- Canonical schema: patients, encounters, conditions, observations, medications, claims
+
+**Processing:**
+- ETL pipeline extracts, normalizes, and loads data into DuckDB
+- Data quality checks and audit logging
+- SQL views define cohorts, risk strata, and metrics
+- Text-to-SQL agent (NLQ) translates natural language to safe SQL queries
+
+**Output:**
+- Interactive Streamlit dashboard for cohort exploration
+- Statistical visualizations (trajectories, distributions, group comparisons)
+- Data quality reports
+- Exportable cohort tables and metrics
+
+---
+
+## Quick Start
 
 ```bash
-# Setup (first time only)
+# 1. Install dependencies
 pip install -r requirements.txt
 
-# Default: synthetic/demo source
+# 2. Run the ETL pipeline with demo data
 make run-synthetic
 
-# Ask a question (NLQ text-to-SQL)
-python -m agent.text_to_sql
-> Show me the distribution of key metrics by patient group
-
-# Or explore visually
+# 3. Launch the dashboard
 streamlit run dashboard/app.py
+
+# 4. (Optional) Ask questions via CLI
+python -m agent.text_to_sql
 ```
 
 ---
 
-## What This Shows
 
-✅ **Real healthcare ETL**: ICD-10, LOINC, RxNorm code systems. Canonical schema. DuckDB analytical database.  
-✅ **SQL + AI**: Text-to-SQL agent using Claude. SELECT-only safety enforcement. Query against live cohort views.  
-✅ **End-to-end pipeline**: Raw data → Extract/normalize → Load tables → Build SQL views → Query/visualize.  
-✅ **Dataset-agnostic dashboard**: Automatic schema introspection detects numerical and categorical variables. Sidebar cohort filters apply uniformly to all visualizations. Selectable axes for trajectory (any numeric metric) and distribution (any categorical dimension). NLQ-based cohort customization in sidebar converts natural language to SQL. Box plot with statistical group comparison.  
-✅ **Production polish**: Data quality checks. ETL audit logging. Comprehensive test suite. CI/CD ready.  
+## Core Features
+
+- **Trajectory visualization:** Plot patient-level or cohort-level metric trends over time, with subgroup overlays and sampling controls.
+- **Distribution analysis:** Box plots and statistical summaries of feature values across any categorical variable.
+- **Category breakdowns:** Pie charts and counts for patient groups by risk, drug, or any other category.
+- **NLQ-to-SQL agent:** Use natural language to define cohorts, filter data, or generate custom analytics—no SQL required.
+- **Cohort filters:** Sidebar controls for risk, exposure, thresholds, and custom NLQ cohort restriction.
+- **Dataset-agnostic:** Works with any data mapped to the canonical schema.
+- **Robust ETL:** Handles ICD-10, LOINC, RxNorm; normalization and logging.
+- **Data quality:** Built-in checks and reports.
+- **Extensible:** Add new metrics, risk models, or cohort logic via SQL and Python.
 
 ---
 
-## Dataset Selection (Explicit)
+## Limitations
 
-The pipeline is dataset-agnostic, supporting any data with a canonical schema. Source choice is explicit so semantics stay clear.
+- Not a substitute for validated clinical decision support
+- CKD risk and trend timing are proxies, not validated clinical labels (see dashboard caveats)
+- Requires data mapped to canonical schema for full functionality
+- NLQ agent is SELECT-only and may not support all SQL constructs
+- See [docs/PHASE3.md](docs/PHASE3.md) for production caveats and hardening notes
+
+---
+
+## How to Use Your Own Data
+
+1. Format your data as CSV, HL7 v2, or FHIR bundles matching the canonical schema (see [docs/REPO_WALKTHROUGH.md](docs/REPO_WALKTHROUGH.md))
+2. Place files in the appropriate `data/raw/` subfolder
+3. Run the ETL pipeline (see Makefile targets or [DETAILED_README.md](docs/DETAILED_README.md))
+4. Launch the dashboard or use the CLI agent
+
+---
+
+## Documentation & Specifications
+
+- **[REPO_WALKTHROUGH.md](docs/REPO_WALKTHROUGH.md):** Folder map, entry points, data formats, how to plug in new datasets
+- **[DEMO_RUNBOOK.md](docs/DEMO_RUNBOOK.md):** Step-by-step demo walkthrough
+- **[PHASE3.md](docs/PHASE3.md):** Production hardening, HL7 parsing, metadata logging, testing
+- **[DETAILED_README.md](docs/DETAILED_README.md):** Full technical details and advanced usage
+
+---
+
+## Example Use Cases
+
+- Build and analyze diabetes or CKD cohorts from EHR/claims data
+- Compare outcomes by drug exposure, risk strata, or custom cohort definitions
+- Prototype new cohort logic or risk models for research
+
+---
+
+## Setup (First Time)
+
+```bash
+git clone https://github.com/zhuy16/ClinicalCohort-AI.git
+cd ClinicalCohort-AI
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+# Optional: add Anthropic API key for text-to-SQL agent
+cp .env.example .env
+# Edit .env and add your ANTHROPIC_API_KEY
+make run-synthetic
+make dashboard
+```
+
+---
+
+## For More Details
+
+See the [docs/](docs/) folder for full specifications, advanced configuration, and extension guides.
 
 ```bash
 # Synthetic/demo source (default)

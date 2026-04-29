@@ -45,6 +45,14 @@ st.markdown(
         background: linear-gradient(180deg, var(--app-bg-top) 0%, var(--app-bg-bottom) 100%);
     }
 
+    .main .block-container,
+    [data-testid="stAppViewBlockContainer"],
+    [data-testid="stMainBlockContainer"] {
+        max-width: min(1800px, 98vw);
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #f6f9fc 0%, #edf3f9 100%);
         border-right: 1px solid #d2dce7;
@@ -77,7 +85,25 @@ st.markdown(
         border: 1px solid var(--panel-border);
         border-radius: 14px;
         box-shadow: 0 4px 16px rgba(16, 34, 52, 0.07);
-        margin: 0 0.45rem 0.85rem 0.45rem;
+        margin: 0 0.2rem 0.75rem 0.2rem;
+        padding: 0.7rem 0.85rem 0.85rem 0.85rem;
+    }
+
+    [data-testid="stVerticalBlockBorderWrapper"] [data-testid="stVerticalBlockBorderWrapper"] {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    [data-testid="stHorizontalBlock"]:has(> [data-testid="column"]:nth-child(2)):not(:has(> [data-testid="column"]:nth-child(3))) > [data-testid="column"]:first-child {
+        border-right: 1px solid #c3d0dc;
+        padding-right: 0.75rem;
+    }
+
+    [data-testid="stHorizontalBlock"]:has(> [data-testid="column"]:nth-child(2)):not(:has(> [data-testid="column"]:nth-child(3))) > [data-testid="column"]:nth-child(2) {
+        padding-left: 0.75rem;
     }
 
     [data-testid="stSidebar"] [data-testid="stVerticalBlockBorderWrapper"] {
@@ -294,9 +320,18 @@ pretty_names = {
 st.subheader("Cohort Distribution")
 st.caption("These charts reflect the cohort selected by the sidebar filters on the left.")
 
-explore_col, ask_col = st.columns([1, 1], gap="large")
+explore_col, ask_col = st.columns([1, 1], gap="small")
 left_panel = explore_col.container(border=True)
 right_panel = ask_col.container(border=True)
+
+# Add a visible left border to the right panel for clear separation
+with ask_col:
+    st.markdown(
+        '<style>'
+        '[data-testid="stVerticalBlockBorderWrapper"] { border-left: 2px solid #b0b9c6 !important; margin-left: -1px; padding-left: 1.5rem !important; }'
+        '</style>',
+        unsafe_allow_html=True,
+    )
 
 with left_panel:
     st.markdown("**Trajectory over time**")
