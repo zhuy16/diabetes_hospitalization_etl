@@ -32,21 +32,41 @@ While the platform implements many best practices for data quality, modular ETL,
 
 ## How It Works
 
-**Input:**
-- Raw healthcare data (CSV, HL7 v2, FHIR bundles, or demo data)
-- Canonical schema: patients, encounters, conditions, observations, medications, claims
+This project implements a full **EHR data → SQL database → Analytics dashboard** pipeline that mirrors real-world healthcare data engineering workflows.
 
-**Processing:**
-- ETL pipeline extracts, normalizes, and loads data into DuckDB
-- Data quality checks and audit logging
-- SQL views define cohorts, risk strata, and metrics
-- Text-to-SQL agent (NLQ) translates natural language to safe SQL queries
+```
+EHR Sources               ETL Pipeline              SQL Database             Dashboard
+──────────────            ────────────────          ──────────────           ─────────────
+HL7 v2 messages  ──►      Parse & normalize  ──►    DuckDB / PostgreSQL  ──► Streamlit app
+FHIR bundles     ──►      Map to canonical   ──►    Managed SQL tables   ──► Cohort filters
+CSV / claims     ──►      schema             ──►    SQL views / metrics  ──► NLQ-to-SQL
+Synthea demo     ──►      Data quality QA    ──►    Audit log            ──► Charts & KPIs
+```
 
-**Output:**
-- Interactive Streamlit dashboard for cohort exploration
+**Input — EHR formats supported:**
+- **HL7 v2** messages (ADT, ORU, ORM segments) — parsed by `etl/parse_hl7v2.py`
+- **FHIR bundles** (stub in `etl/` — wire in your own loader)
+- **CSV / claims** exports mapped to the canonical schema
+- **Synthetic demo data** — auto-generated, zero setup required
+
+**ETL — what happens to the data:**
+- Messages/files are parsed and normalized to a canonical 6-table schema: `patients`, `encounters`, `conditions`, `observations`, `medications`, `claims`
+- Healthcare code systems are standardized: ICD-10, LOINC, RxNorm
+- Data is loaded into **DuckDB** (default, file-based, no server needed) — the same ETL logic can target **PostgreSQL, Snowflake, or any SQL warehouse** by swapping the loader
+- SQL views (`sql/views_*.sql`) define cohorts, risk strata, and derived metrics on top of the raw tables
+- Data quality checks generate audit reports
+
+**Database — managed SQL tables:**
+- The database layer is intentionally decoupled from both the ETL and the dashboard
+- In production, the ETL process would populate managed SQL tables on a schedule (e.g., daily incremental loads), and the dashboard would connect read-only to those tables
+- SQL views act as a stable API between the ETL-owned raw tables and the dashboard queries
+- DuckDB is used here for portability; replacing it with a managed warehouse requires only changing the connection in `etl/load.py` and `dashboard/app.py`
+
+**Output — dashboard fetches pre-defined views:**
+- Interactive Streamlit dashboard queries the SQL views directly — no application-layer data processing
 - Statistical visualizations (trajectories, distributions, group comparisons)
-- Data quality reports
-- Exportable cohort tables and metrics
+- Natural language → SQL agent lets analysts query the database in plain English
+- Data quality reports and exportable cohort tables
 
 ---
 

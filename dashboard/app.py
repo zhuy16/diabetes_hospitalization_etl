@@ -139,6 +139,19 @@ st.markdown(
     .stAlert {
         border-radius: 10px;
     }
+
+    [data-testid="stSidebar"] .stElementContainer {
+        margin-bottom: 0.05rem !important;
+    }
+
+    [data-testid="stSidebar"] [data-testid="stVerticalBlock"] > [data-testid="stVerticalBlockBorderWrapper"] {
+        margin-top: 0.15rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+
+    [data-testid="stSidebar"] hr {
+        margin: 0.3rem 0 !important;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -205,18 +218,34 @@ if selected_drug:
         drug_filter = "1=0"  # nothing selected → no results
 
 st.sidebar.markdown("---")
-st.sidebar.subheader("Optional Custom Cohort (NLQ)")
 use_custom_cohort = st.sidebar.checkbox(
-    "Use custom cohort restriction",
+    "Use custom cohort definition (Natural Language Query)",
     value=st.session_state.get("use_custom_cohort", False),
     help="When enabled, the dashboard is restricted to patient_id values returned by the NLQ query below.",
 )
 st.session_state["use_custom_cohort"] = use_custom_cohort
 
 if use_custom_cohort:
-    st.sidebar.caption("Write a question that returns a `patient_id` column.")
+    st.sidebar.markdown(
+        """
+        <style>
+        [data-testid="stSidebar"] textarea {
+            border: 2px solid #0f6a9a !important;
+            border-radius: 8px !important;
+            background: #f0f7ff !important;
+            box-shadow: 0 0 0 3px rgba(15,106,154,0.15) !important;
+            font-size: 0.92rem !important;
+        }
+        [data-testid="stSidebar"] textarea:focus {
+            border-color: #0a4d73 !important;
+            box-shadow: 0 0 0 4px rgba(15,106,154,0.28) !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
     cohort_question = st.sidebar.text_area(
-        "Custom cohort question",
+        "",
         key="cohort_question",
         placeholder="Example: List patient_id for HIGH CKD risk patients not on diabetes drug",
         height=90,
@@ -245,6 +274,10 @@ if use_custom_cohort:
         st.session_state.pop("cohort_sql", None)
         st.session_state.pop("cohort_result", None)
         st.session_state.pop("cohort_patient_df", None)
+
+    if "cohort_sql" in st.session_state:
+        with st.sidebar.expander("Generated SQL", expanded=True):
+            st.code(st.session_state["cohort_sql"], language="sql")
 
 st.sidebar.markdown("---")
 st.sidebar.caption(
